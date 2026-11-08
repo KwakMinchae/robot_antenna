@@ -1,0 +1,106 @@
+Which algorithm for stage 1?
+  1) Coarse to fine
+  2) Bayesian
+  3) Sequential lobing
+Type 1, 2 or 3: 1
+Select Success
+Successfully connected to device.
+Stage connected at [0.0, 0.0, 0.0]
+Gimbal connected on COM3
+Rx loading...launched. 
+Noise power = -54.13984985711545 dBm
+Tx loading...launched. 
+
+One SNR reading takes 532 ms -> glide speed 3.8 deg/s | gimbal updates at 19 Hz
+
+--- STAGE 1: coarse to fine (continuous) ---
+  rough search: 241 readings in 129 s -> pan 90.0, tilt 5.3
+  tilt refine | forward peak    6.1  backward peak    5.9  -> best    6.0 deg, lag  0.03 s
+  STAGE 1 RESULT (coarse_to_fine): pan 90.0, tilt 6.0 deg | SNR 41.43 dB | 282 readings, 153 s | lag 0.03 s
+  Added a row to stage1_comparison.csv
+
+--- STAGE 2: track (Ctrl+C to stop) ---
+  t    4.1 s | aim pan   90.0 tilt   6.0 | SNR  41.21 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t    6.3 s | aim pan   90.0 tilt   6.0 | SNR  41.29 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t    8.4 s | aim pan   90.0 tilt   6.0 | SNR  41.28 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   10.5 s | aim pan   90.0 tilt   6.0 | SNR  41.29 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   12.6 s | aim pan   90.0 tilt   6.0 | SNR  41.29 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   14.7 s | aim pan   90.0 tilt   6.0 | SNR  41.26 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   16.9 s | aim pan   90.0 tilt   6.0 | SNR  41.23 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   19.0 s | aim pan   90.0 tilt   6.0 | SNR  41.17 dB | slope +0.00/-0.00 dB/deg | circle  5.0 | on target
+  t   21.1 s | aim pan   90.0 tilt   6.0 | SNR  41.19 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t   23.2 s | aim pan   90.0 tilt   6.0 | SNR  41.18 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t   25.4 s | aim pan   90.0 tilt   6.0 | SNR  41.17 dB | slope +0.00/-0.00 dB/deg | circle  5.0 | on target
+  t   27.5 s | aim pan   90.0 tilt   6.0 | SNR  41.20 dB | slope +0.00/+0.00 dB/deg | circle  5.0 | on target
+  t   29.7 s | aim pan   90.0 tilt   6.0 | SNR  41.21 dB | slope +0.00/-0.00 dB/deg | circle  5.0 | on target
+  t   31.8 s | aim pan   90.0 tilt   6.0 | SNR  41.25 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   33.9 s | aim pan   90.0 tilt   6.0 | SNR  41.29 dB | slope +0.00/-0.00 dB/deg | circle  5.0 | on target
+  t   36.0 s | aim pan   90.0 tilt   6.0 | SNR  41.23 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t   38.2 s | aim pan   90.0 tilt   6.0 | SNR  41.23 dB | slope +0.00/-0.02 dB/deg | circle  5.0 | on target
+  t   40.3 s | aim pan   90.0 tilt   6.0 | SNR  41.38 dB | slope +0.00/+0.02 dB/deg | circle  5.0 | on target
+  t   42.4 s | aim pan   90.0 tilt   6.6 | SNR  41.22 dB | slope +0.00/+0.06 dB/deg | circle  5.0 | shift
+  t   44.6 s | aim pan   90.0 tilt   6.6 | SNR  41.14 dB | slope +0.00/+0.03 dB/deg | circle  5.0 | on target
+  t   46.7 s | aim pan   90.0 tilt   6.6 | SNR  41.30 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t   48.8 s | aim pan   90.0 tilt   6.6 | SNR  41.17 dB | slope +0.00/-0.04 dB/deg | circle  5.0 | on target
+  t   51.0 s | aim pan   90.0 tilt   6.6 | SNR  41.01 dB | slope +0.00/+0.01 dB/deg | circle  5.0 | on target
+  t   53.1 s | aim pan   90.0 tilt   6.6 | SNR  40.96 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t   55.2 s | aim pan   90.0 tilt   6.6 | SNR  41.07 dB | slope +0.00/-0.05 dB/deg | circle  5.0 | on target
+  t   57.4 s | aim pan   90.0 tilt   2.4 | SNR  39.14 dB | slope +0.00/-0.42 dB/deg | circle  5.0 | shift
+  t   59.5 s | aim pan   90.0 tilt   7.1 | SNR  34.69 dB | slope +0.00/+0.47 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   61.7 s | aim pan   90.0 tilt   6.7 | SNR  32.24 dB | slope +0.00/-0.03 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   63.8 s | aim pan   90.0 tilt   8.0 | SNR  30.28 dB | slope +0.00/+0.13 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   65.9 s | aim pan   90.0 tilt   7.6 | SNR  28.42 dB | slope +0.00/-0.04 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   68.0 s | aim pan   90.0 tilt   7.8 | SNR  28.41 dB | slope +0.00/+0.02 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   70.2 s | aim pan   90.0 tilt   9.4 | SNR  29.91 dB | slope +0.00/+0.16 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   72.3 s | aim pan   90.0 tilt  14.1 | SNR  26.80 dB | slope +0.00/+0.47 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   74.4 s | aim pan   90.0 tilt  14.4 | SNR  22.04 dB | slope +0.00/+0.03 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   76.6 s | aim pan   90.0 tilt  13.3 | SNR  23.08 dB | slope +0.00/-0.11 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   78.7 s | aim pan   90.0 tilt  10.4 | SNR  22.25 dB | slope +0.00/-0.29 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   80.8 s | aim pan   90.0 tilt   5.4 | SNR  26.85 dB | slope +0.00/-0.60 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   83.0 s | aim pan   90.0 tilt   5.7 | SNR  34.00 dB | slope +0.00/+0.03 dB/deg | circle  5.0 | re-found -> small circle
+  t   85.1 s | aim pan   90.0 tilt   2.3 | SNR  36.84 dB | slope +0.00/-0.34 dB/deg | circle  5.0 | shift
+  t   87.3 s | aim pan   90.0 tilt   3.8 | SNR  39.16 dB | slope +0.00/+0.15 dB/deg | circle  5.0 | shift
+  t   89.4 s | aim pan   90.0 tilt   8.8 | SNR  37.39 dB | slope +0.00/+0.50 dB/deg | circle  5.0 | shift
+  t   91.5 s | aim pan   90.0 tilt   3.8 | SNR  29.50 dB | slope +0.00/-1.05 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   93.7 s | aim pan   90.0 tilt   2.7 | SNR  24.42 dB | slope +0.00/-0.11 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   95.8 s | aim pan   90.0 tilt   2.5 | SNR  25.02 dB | slope +0.00/-0.02 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t   97.9 s | aim pan   90.0 tilt   3.4 | SNR  23.32 dB | slope +0.00/+0.10 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  100.1 s | aim pan   90.0 tilt   0.4 | SNR  18.52 dB | slope +0.00/-0.30 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  102.2 s | aim pan   90.0 tilt  -2.6 | SNR  19.65 dB | slope +0.00/-0.30 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  104.3 s | aim pan   90.0 tilt   2.4 | SNR  34.16 dB | slope +0.00/+1.03 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  106.5 s | aim pan   90.0 tilt   4.0 | SNR  43.14 dB | slope +0.00/+0.16 dB/deg | circle  5.0 | re-found -> small circle
+  t  108.6 s | aim pan   90.0 tilt   5.8 | SNR  43.53 dB | slope +0.00/+0.18 dB/deg | circle  5.0 | shift
+  t  110.8 s | aim pan   90.0 tilt   6.7 | SNR  44.52 dB | slope +0.00/+0.09 dB/deg | circle  5.0 | shift
+  t  112.9 s | aim pan   90.0 tilt   7.4 | SNR  44.11 dB | slope +0.00/+0.07 dB/deg | circle  5.0 | shift
+  t  115.1 s | aim pan   90.0 tilt  12.4 | SNR  37.31 dB | slope +0.00/+1.68 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  117.2 s | aim pan   90.0 tilt  15.2 | SNR  33.20 dB | slope +0.00/+0.27 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  119.4 s | aim pan   90.0 tilt  18.0 | SNR  33.39 dB | slope +0.00/+0.28 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  121.6 s | aim pan   90.0 tilt  20.0 | SNR  32.92 dB | slope +0.00/+0.20 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  123.7 s | aim pan   90.0 tilt  21.8 | SNR  33.51 dB | slope +0.00/+0.18 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  125.8 s | aim pan   90.0 tilt  23.6 | SNR  33.75 dB | slope +0.00/+0.18 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  128.0 s | aim pan   90.0 tilt  25.4 | SNR  34.52 dB | slope +0.00/+0.17 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  130.2 s | aim pan   90.0 tilt  27.7 | SNR  35.45 dB | slope +0.00/+0.23 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  132.4 s | aim pan   90.0 tilt  24.8 | SNR  36.66 dB | slope +0.00/-0.29 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  134.6 s | aim pan   90.0 tilt  19.8 | SNR  29.14 dB | slope +0.00/-0.90 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  136.7 s | aim pan   90.0 tilt  17.1 | SNR  24.42 dB | slope +0.00/-0.28 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  138.8 s | aim pan   90.0 tilt  16.5 | SNR  31.16 dB | slope +0.00/-0.05 dB/deg | circle 15.0 | SNR dropped -> wide circle
+  t  141.0 s | aim pan   90.0 tilt  13.3 | SNR  38.14 dB | slope +0.00/-0.32 dB/deg | circle  5.0 | re-found -> small circle
+  t  143.1 s | aim pan   90.0 tilt  12.6 | SNR  40.55 dB | slope +0.00/-0.07 dB/deg | circle  5.0 | shift
+  t  145.3 s | aim pan   90.0 tilt  11.2 | SNR  40.87 dB | slope +0.00/-0.14 dB/deg | circle  5.0 | shift
+  t  147.4 s | aim pan   90.0 tilt  10.7 | SNR  41.20 dB | slope +0.00/-0.05 dB/deg | circle  5.0 | shift
+  t  149.6 s | aim pan   90.0 tilt  10.7 | SNR  41.15 dB | slope +0.00/-0.05 dB/deg | circle  5.0 | on target
+  t  151.8 s | aim pan   90.0 tilt  10.1 | SNR  41.16 dB | slope +0.00/-0.05 dB/deg | circle  5.0 | shift
+  t  153.9 s | aim pan   90.0 tilt  10.1 | SNR  41.22 dB | slope +0.00/-0.04 dB/deg | circle  5.0 | on target
+  t  156.0 s | aim pan   90.0 tilt  10.1 | SNR  41.26 dB | slope +0.00/-0.04 dB/deg | circle  5.0 | on target
+  t  158.2 s | aim pan   90.0 tilt  10.1 | SNR  41.24 dB | slope +0.00/-0.04 dB/deg | circle  5.0 | on target
+  t  160.4 s | aim pan   90.0 tilt  10.1 | SNR  41.25 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  162.5 s | aim pan   90.0 tilt  10.1 | SNR  41.29 dB | slope +0.00/-0.04 dB/deg | circle  5.0 | on target
+  t  164.6 s | aim pan   90.0 tilt  10.1 | SNR  41.28 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  166.8 s | aim pan   90.0 tilt  10.1 | SNR  41.25 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  168.9 s | aim pan   90.0 tilt  10.1 | SNR  41.23 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  171.1 s | aim pan   90.0 tilt  10.1 | SNR  41.19 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  173.2 s | aim pan   90.0 tilt  10.1 | SNR  41.20 dB | slope +0.00/-0.03 dB/deg | circle  5.0 | on target
+  t  175.4 s | aim pan   90.0 tilt  10.1 | SNR  41.23 dB | slope +0.00/-0.02 dB/deg | circle  5.0 | on target
+  t  177.5 s | aim pan   90.0 tilt  10.1 | SNR  41.27 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target
+  t  179.7 s | aim pan   90.0 tilt  10.1 | SNR  41.24 dB | slope +0.00/-0.02 dB/deg | circle  5.0 | on target
+  t  181.9 s | aim pan   90.0 tilt  10.1 | SNR  41.12 dB | slope +0.00/-0.01 dB/deg | circle  5.0 | on target

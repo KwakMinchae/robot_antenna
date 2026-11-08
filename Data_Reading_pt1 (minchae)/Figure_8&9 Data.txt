@@ -1,0 +1,16 @@
+XYZ SWEEP COMPLETE
+========================================
+Best X = 0.0 cm
+Best Y = -19.05 cm
+Best Z = -15.24 cm
+Best SNR = 49.25983720777143 dB
+Total time = 14029.878169059753 s
+Total time = 233.83130281766256 minutes
+Total time = 3.897188380294376 hours
+Saved measurements to xyz_snr_results.csv
+Saved SNR grid to xyz_snr_grid.npy
+Calibration to origin: in progress...
+Calibration to origin: done. 
+Successfully deconnected and closed device. 
+Tx termination in progress...done.
+Rx termination in progress...done.
