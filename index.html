@@ -228,18 +228,18 @@ table.rt{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numer
             <tbody>
               <tr><td>Full sweep</td><td>Live</td><td class="num">9,261</td><td class="num">17 h</td><td class="num">0</td><td class="num">—</td><td class="num">—</td></tr>
               <tr><td>Coarse sweep (3.81 cm)</td><td>Live</td><td class="num">1,331</td><td class="num">3.9 h</td><td class="num">1.19 dB</td><td class="num">—</td><td class="num">—</td></tr>
-              <tr><td>Coarse-to-fine</td><td>Live</td><td class="num"><b>173</b></td><td class="num"><b>58 min</b></td><td class="num"><b>0.07 dB</b></td><td class="num">100%</td><td class="num">98%</td></tr>
-              <tr><td>Bayesian</td><td>Replay</td><td class="num"><b>60</b></td><td class="num">~56 min*</td><td class="num">0.00 dB</td><td class="num"><b>96%</b></td><td class="num">100%</td></tr>
-              <tr><td>Adaptive pattern</td><td>Replay</td><td class="num">60</td><td class="num">~43 min*</td><td class="num">1.00 dB</td><td class="num">49%</td><td class="num">87%</td></tr>
-              <tr><td>Greedy</td><td>Replay</td><td class="num">2,814</td><td class="num">~6 h*</td><td class="num">1.99 dB</td><td class="num">42%</td><td class="num">84%</td></tr>
-              <tr><td>Random walk</td><td>Replay</td><td class="num">3,000</td><td class="num">~7 h*</td><td class="num">0.89 dB</td><td class="num">52%</td><td class="num">90%</td></tr>
+              <tr><td>Coarse-to-fine</td><td>Live</td><td class="num"><b>173</b></td><td class="num"><b>58 min</b></td><td class="num"><b>0.07 dB</b></td><td class="num">100%</td><td class="num">100%</td></tr>
+              <tr><td>Bayesian</td><td>Replay</td><td class="num"><b>60</b></td><td class="num">~56 min*</td><td class="num">0.00 dB</td><td class="num"><b>96%</b></td><td class="num">99%</td></tr>
+              <tr><td>Adaptive pattern</td><td>Replay</td><td class="num">60</td><td class="num">~43 min*</td><td class="num">1.00 dB</td><td class="num">49%</td><td class="num">91%</td></tr>
+              <tr><td>Greedy</td><td>Replay</td><td class="num">2,814</td><td class="num">~6 h*</td><td class="num">1.99 dB</td><td class="num">42%</td><td class="num">71%</td></tr>
+              <tr><td>Random walk</td><td>Replay</td><td class="num">3,000</td><td class="num">~7 h*</td><td class="num">0.89 dB</td><td class="num">52%</td><td class="num">81%</td></tr>
             </tbody></table></div>
-          <p class="fn">Replay: 100 runs on the measured map; medians shown. Pass = final pick within 1 dB of the best. *Estimated from the stage's speed.</p></div>
+          <p class="fn">Replay: 100 runs on the measured map; medians shown. Pass = final pick within 1 dB of the best. Sim = simulated map at 2.49 GHz. *Estimated from the stage's speed.</p></div>
         <div class="rc span8"><h3>Gap to the best vs measurements (replay on the real map, median)</h3><canvas id="r-poscurve"></canvas><div class="leg" id="r-poscurve-leg"></div></div>
         <div class="rc span4"><h3>What it shows</h3><ul class="facts">
           <li><b>Line of sight matters.</b> Removing a metal rod raised the mean SNR by 12 dB (16.4 → 28.4 dB).</li>
-          <li><b>The real room is rugged.</b> 261 local peaks in the measured map against 32 in the simulation.</li>
-          <li><b>So uphill-only methods fail.</b> Greedy, random and pattern search pass 42–52% on the real map, against 84–90% on the simulated one.</li>
+          <li><b>The real room is rugged.</b> 261 local peaks in the measured map against 49 in the 2.49 GHz simulation.</li>
+          <li><b>So uphill-only methods fail.</b> Greedy, random and pattern search pass 42–52% on the real map, against 71–91% on the simulated one.</li>
           <li><b>Coarse-to-fine and Bayesian</b> handle it: 96–100% pass.</li></ul></div>
       </div>
     </div>
