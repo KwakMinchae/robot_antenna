@@ -318,7 +318,8 @@ const ROT = [
   {key:'sweep', name:'Full angle sweep', live:true} ];
 function buildPosRun(key){ const P=D[key].path, dt=D[key].dt; let t=0; return P.map((p,i)=>{ t+=dt[i]; return {x:p[0],y:p[1],z:p[2],s:p[3],T:t}; }); }
 function buildRotRun(key){   // 9 Nov 2026 session, repeat 1 of each, real lab times
-  return D.rot2[key].map(a=> key==='lobing' ? {T:a[0],p:a[1],t:a[2],s:a[3],c:a[4]} : key==='simtrack' ? {T:a[0],p:a[1],t:a[2],s:a[3],ph:a[4],xp:a[5],xt:a[6]} : {T:a[0],p:a[1],t:a[2],s:a[3]}); }
+  return D.rot2[key].map(a=> key==='lobing' ? {T:a[0],p:a[1],t:a[2],s:a[3],c:a[4]} : key==='simtrack' ? {T:a[0],p:a[1],t:a[2],s:a[3],ph:a[4],xp:a[5],xt:a[6]} : key==='track' ? {T:a[0],p:a[1],t:a[2],s:a[3],ph:a[4]} : {T:a[0],p:a[1],t:a[2],s:a[3]}); }
+const MODE={find:'Searching',refind:'Searching',lost:'Lost',track:'Tracking'};
 const isTrack = k => k==='track'||k==='simtrack';
 const TB = D.best;
 const tagText = d => d.tag || (d.live ? 'Live' : 'Replay');
@@ -357,7 +358,7 @@ function shell(grid, def, kind){
 
 function cardStats(c){ const n=c.k, now=n?c.run[n-1]:null;
   if(c.kind==='pos') return `<span><b>${n.toLocaleString()}</b> measurements</span><span><b>${c.best?c.best.s.toFixed(2):'–'}</b> dB best</span>`;
-  return `<span><b>${n}</b> measurements</span><span><b>${now?`${now.p.toFixed(0)}° / ${now.t.toFixed(0)}°`:'–'}</b></span><span><b>${now&&now.s!=null?now.s.toFixed(1):'–'}</b> ${now&&now.s!=null?'dB':(c.def.key==='sweep'?'no SNR':'')}</span>`; }
+  return `<span><b>${n}</b> measurements</span><span><b>${now?`${now.p.toFixed(0)}° / ${now.t.toFixed(0)}°`:'–'}</b></span><span><b>${now&&now.s!=null?now.s.toFixed(1):'–'}</b> ${now&&now.s!=null?'dB':(c.def.key==='sweep'?'no SNR':'')}</span>${now&&now.ph?`<span><b>${MODE[now.ph]}</b></span>`:''}`; }
 function focusStats(c){ const n=c.k, N=c.run.length, now=n?c.run[n-1]:null; const cell=(t,v)=>`<div><dt>${t}</dt><dd>${v}</dd></div>`;
   if(c.kind==='pos') return cell('Measurements',`${n.toLocaleString()}`)+cell('Best SNR',c.best?c.best.s.toFixed(2)+' dB':'–')+cell('Gap to true best',c.best?(TB[3]-c.best.s).toFixed(2)+' dB':'–')+cell('Lab time',now?fmtTime(now.T):'0:00');
   if(c.def.key==='simtrack') return cell('Rx pan / tilt',now?`${now.p.toFixed(0)}° / ${now.t.toFixed(0)}°`:'–')+cell('Tx direction',now?`${now.xp.toFixed(0)}° / ${now.xt.toFixed(0)}°`:'–')+cell('SNR now',now?now.s.toFixed(1)+' dB':'–')+cell('Time',now?fmtTime(now.T):'0:00');
@@ -483,7 +484,8 @@ function drawSpark(cv, card){
   const vals=run.map(p=>p.s); if(vals.every(v=>v==null)){ g.fillStyle=css('--ink'); g.font=`12px ${FONT}`; g.fillText('SNR not saved for this run',4,h/2); return; }
   let b=-Infinity; const line=track?vals:vals.map(v=>{ if(v!=null&&v>b) b=v; return b===-Infinity?null:b; });
   const fin=line.filter(v=>v!=null), lo=Math.min(...fin), hi=Math.max(...fin, card.kind==='pos'?TB[3]:-Infinity);
-  const X=i=>36+i/((run.length-1)||1)*(w-42), Y=v=>h-8-(v-lo)/((hi-lo)||1)*(h-16);
+  const T0=run[0].T, T1=run[run.length-1].T, X=track?(i=>36+(run[i].T-T0)/((T1-T0)||1)*(w-42)):(i=>36+i/((run.length-1)||1)*(w-42)), Y=v=>h-8-(v-lo)/((hi-lo)||1)*(h-16);
+  if(track&&run[0].ph){ let a=0; for(let i=1;i<=run.length;i++){ if(i===run.length||MODE[run[i].ph]!==MODE[run[a].ph]){ const m=MODE[run[a].ph]; if(m!=='Tracking'){ g.fillStyle=m==='Lost'?'#fbd3c0':'#ececef'; const x0=X(a), x1=X(Math.min(i,run.length-1)); g.fillRect(x0,0,Math.max(1,x1-x0),h); } a=i; } } }
   g.fillStyle=css('--ink'); g.font=`11px ${FONT}`; g.textAlign='right'; g.fillText(hi.toFixed(1),32,12); g.fillText(lo.toFixed(1),32,h-6);
   if(card.kind==='pos'){ g.setLineDash([3,3]); g.strokeStyle=css('--stroke'); g.beginPath(); g.moveTo(36,Y(TB[3])); g.lineTo(w-6,Y(TB[3])); g.stroke(); g.setLineDash([]); }
   const trace=(arr,color,lw)=>{ g.strokeStyle=color; g.lineWidth=lw; g.beginPath(); let s=false; arr.forEach((v,i)=>{ if(v==null) return; s?g.lineTo(X(i),Y(v)):(g.moveTo(X(i),Y(v)),s=true); }); g.stroke(); };
@@ -519,7 +521,7 @@ function openFocus(card){ if(!frenderer) frenderer=makeRenderer(fcanvas);
   $('fname').textContent=card.def.name; const t=$('ftag'); t.className='tag'+(card.def.live?' live':''); t.textContent=tagText(card.def);
   $('fcount').textContent=`${card.idx+1} of ${cards[tab].length}`;
   const pos=card.kind==='pos'; $('fmaps').hidden=!pos; $('fpt').hidden=pos;
-  $('fsc').textContent=isTrack(card.def.key)?'SNR over time':'Best SNR so far';
+  $('fsc').innerHTML=isTrack(card.def.key)?'SNR over time <span style="font-weight:400;margin-left:14px"><i style="display:inline-block;width:11px;height:11px;background:#ececef;border:1px solid #d4d4d8;vertical-align:-1px;margin-right:5px"></i>Searching <i style="display:inline-block;width:11px;height:11px;background:#fbd3c0;vertical-align:-1px;margin:0 5px 0 12px"></i>Lost (wider circle) <i style="display:inline-block;width:11px;height:11px;background:#fff;border:1px solid #d4d4d8;vertical-align:-1px;margin:0 5px 0 12px"></i>Tracking</span>':'Best SNR so far';
   fcanvas._w=null; card.dirty=true; refreshFocus(); window.scrollTo({top:0,behavior:'smooth'}); }
 function closeFocus(){ if(!focus) return; const was=focus; focus=null; $('focus').hidden=true; $('grid-'+tab).hidden=false;
   cards[tab].forEach(c=>{ c.canvas._w=null; c.dirty=true; if(c.kind==='rot') drawPlot(c.plot,c,0.95); }); was.el.scrollIntoView({block:'center'}); }
